@@ -16,3 +16,5 @@ venv/
 
 # VS Code 配置文件 (可选，通常每个人配置不一样，建议忽略)
 .vscode/
+
+**/local_settings.py
