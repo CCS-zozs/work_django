@@ -18,3 +18,9 @@ venv/
 .vscode/
 
 **/local_settings.py
+
+# 忽略 media 文件夹下的所有内容
+media/*
+
+# 但是！保留 media 文件夹本身（通过保留里面的一个隐藏文件）
+!media/.gitkeep

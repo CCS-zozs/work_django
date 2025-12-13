@@ -12,3 +12,7 @@ class BookForm(forms.ModelForm):
             'cover_image': '表紙画像',
         }
         
+        widgets = {
+            'publication_date': forms.DateInput(attrs={'type': 'date'}),
+        }
+        
