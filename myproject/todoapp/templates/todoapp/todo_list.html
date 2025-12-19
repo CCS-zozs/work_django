@@ -10,6 +10,12 @@
     <div class="container">
         <h1>することの一覧</h1>
         <hr>
+
+        <div class="action-buttons">
+            <a href="{% url 'todo_create' %}" class="btn btn-primary">新規作成</a>
+            <a href="{% url 'menu' %}" class="btn btn-secondary">メニューに戻る</a>
+        </div>
+
         <!-- ToDo項目のリスト -->
         <ul class="todo-list">
             {% for todo in todos %}
@@ -32,6 +38,9 @@
                     <!-- 更新日時の表示 -->
                     <div class="todo-date">
                         更新日: {{ todo.updated|date:"Y年m月d日 H:i:s" }}
+                    </div>
+                    <div class="todo-actions">
+                        <a href="{% url 'todo_detail' todo.id %}" class="btn btn-info">詳細</a>
                     </div>
                 </li>
             {% endfor %}
