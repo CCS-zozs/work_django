@@ -41,6 +41,7 @@
                     </div>
                     <div class="todo-actions">
                         <a href="{% url 'todo_detail' todo.id %}" class="btn btn-info">詳細</a>
+                        <a href="{% url 'todo_update' todo.id %}" class="btn btn-warning">編集</a>
                     </div>
                 </li>
             {% endfor %}
