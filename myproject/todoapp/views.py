@@ -1,9 +1,10 @@
 from . import models # 現在のアプリケーションのモデルをインポート
 
 # Djangoのクラスベースビューをインポート
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.utils.timezone import localtime
+from .forms import TodoForm
 
 # ============================================================
 # ToDo一覧表示用のビュー：継承元はListView
@@ -24,16 +25,21 @@ class TodoDetailView(DetailView):
 class TodoCreateView(CreateView):
     model = models.Todo
     template_name = 'todoapp/todo_create.html'
-    fields = ['title', 'memo', 'completed']
+    form_class = TodoForm
     success_url = reverse_lazy('todo_list')
     
 class TodoUpdateView(UpdateView):
     model = models.Todo
     template_name = 'todoapp/todo_update.html'
-    fields = ['title', 'memo', 'completed']
+    form_class = TodoForm
     success_url = reverse_lazy('todo_list')
     
     def form_valid(self, form):
         todo = form.save()
         print(f"Todo項目が更新されました: {todo.title} (更新日時: {localtime(todo.updated)})")
         return super().form_valid(form)
+
+class TodoDeleteView(DeleteView):
+    model = models.Todo
+    template_name = 'todoapp/todo_confirm_delete.html'
+    success_url = reverse_lazy('todo_list')
