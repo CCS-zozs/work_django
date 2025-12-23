@@ -10,12 +10,13 @@
 <body>
     <div class="container">
         <h1 class="menu-header">メニュー画面</h1>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="logout-button">ログアウト</button>
+        </form>
         <div class="menu-container">
             <a href="{% url 'book_list' %}" class="menu-item">書籍アプリへ</a>
-            {% comment %}
-            現時点ではコメントアウトしておく
             <a href="{% url 'todo_list' %}" class="menu-item">ToDoアプリへ</a>
-            {% endcomment %}
         </div>
     </div>
 </body>

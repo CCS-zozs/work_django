@@ -22,9 +22,13 @@ from django.conf.urls.static import static
 
 from . import views
 
+from django.contrib.auth.views import LoginView, LogoutView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('exe02/', include('bookapp.urls')),
     path('menu/', views.MenuPageView.as_view(), name='menu'),
     path('exe03/', include('todoapp.urls')),
+    path('', LoginView.as_view(template_name='login.html'), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

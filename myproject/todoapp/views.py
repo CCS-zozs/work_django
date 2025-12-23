@@ -15,10 +15,12 @@ from django.utils.timezone import localtime
 from .forms import TodoForm
 from django.contrib.messages.views import SuccessMessageMixin
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 # ============================================================
 # ToDo一覧表示用のビュー：継承元はListView
 # ============================================================
-class TodoListView(ListView):
+class TodoListView(LoginRequiredMixin, ListView):
     # 使用するモデルを指定（Todoモデル）
     model = models.Todo
     # 使用するテンプレートファイルを指定

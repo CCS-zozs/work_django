@@ -67,3 +67,38 @@
     /* 下に30pxの余白を設定 */
     margin-bottom: 30px;
 }
+
+/* menu.cssの末尾に追加してください。 */
+/* ログアウトボタンのスタイル */
+.logout-button {
+    /* ボタンをインラインブロックにして、幅や高さを調整可能にする */
+    display: inline-block;
+    /* タイトル下に10pxの余白を追加して間隔を作る */
+    margin-top: 10px;
+    /* ボタン内側の余白を設定し、クリックしやすいサイズにする */
+    padding: 10px 15px;
+    /* ボタンの背景色を赤に設定 */
+    background-color: #e74c3c;
+    /* テキストの色を白にして、背景色とコントラストをつける */
+    color: white;
+    /* ボタンの枠線を消して、スッキリしたデザインにする */
+    border: none;
+    /* ボタンの角を丸くして柔らかい印象にする */
+    border-radius: 5px;
+    /* テキストの下線を消してシンプルな見た目にする */
+    text-decoration: none;
+    /* テキストのサイズを14pxに設定 */
+    font-size: 14px;
+    /* テキストを太字にして目立たせる */
+    font-weight: bold;
+    /* テキストを中央揃えにする */
+    text-align: center;
+}
+
+/* ボタンにホバーしたときのスタイル */
+.logout-button:hover {
+    /* ホバー時に背景色を青に変更し、視覚的な反応を作る */
+    background-color: #3498db;
+    /* ホバー時もテキスト色を白に保つ */
+    color: white;
+}
