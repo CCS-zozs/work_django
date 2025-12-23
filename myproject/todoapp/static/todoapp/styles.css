@@ -317,3 +317,54 @@ h1 {
     /* ボーダーを追加 */
     border: 1px solid #d3d3d3;
 }
+
+/* styles.cssの末尾に追加してください。 */
+/* ===== 分析ページのスタイル ===== */
+
+/* 上部の概要セクションの余白調整 */
+.analytics-summary {
+    margin-bottom: 20px;
+}
+
+/* 統計ボックス全体のレイアウト（横並び、折り返し対応） */
+.stats-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* 各統計ボックスのデザイン */
+.stat-box {
+    margin-top: 15px;                       /* 上の余白 */
+    background-color: #f9f9f9;            /* 背景色（淡いグレー） */
+    border-radius: 8px;                   /* 角丸 */
+    padding: 20px;                        /* 内側の余白 */
+    width: 22%;                           /* 横幅（画面の約1/4） */
+    text-align: center;                  /* 中央揃え */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影で浮かせる */
+}
+
+/* 統計数値のスタイル */
+.stat-value {
+    font-size: 24px;          /* 文字サイズ大きめ */
+    font-weight: bold;        /* 太字 */
+    margin-top: 10px;         /* 上の余白 */
+}
+
+/* グラフ表示エリアの全体スタイル */
+.analytics-charts {
+    background-color: white;               /* 背景色（白） */
+    border-radius: 8px;                    /* 角丸 */
+    padding: 20px;                         /* 内側の余白 */
+    margin-bottom: 30px;                   /* 下の余白 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影で浮かせる */
+}
+
+/* グラフ画像のスタイル（中央揃え＆最大横幅制限） */
+.analytics-charts img {
+    width: 100%;                 /* 横幅をコンテナいっぱいに */
+    height: auto;                /* 高さは自動調整（縦横比維持） */
+    max-width: 800px;            /* 最大横幅を800pxに制限 */
+    margin: 0 auto;              /* 中央揃え */
+    display: block;              /* ブロック要素化（中央揃えのため） */
+}

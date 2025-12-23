@@ -9,4 +9,5 @@ urlpatterns = [
     path('new/', views.TodoCreateView.as_view(), name='todo_create'),
     path('<int:pk>/edit/', views.TodoUpdateView.as_view(), name='todo_update'),
     path('<int:pk>/delete/', views.TodoDeleteView.as_view(), name='todo_delete'),
+    path('analytics/', views.TodoAnalyticsView.as_view(), name='todo_analytics'),
 ]

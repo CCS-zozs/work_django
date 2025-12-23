@@ -1,3 +1,11 @@
+import io
+import base64
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from django.shortcuts import render
+from django.views import View
+
 from . import models # 現在のアプリケーションのモデルをインポート
 
 # Djangoのクラスベースビューをインポート
@@ -47,3 +55,90 @@ class TodoDeleteView(SuccessMessageMixin, DeleteView):
     template_name = 'todoapp/todo_confirm_delete.html'
     success_url = reverse_lazy('todo_list')
     success_message = "Todo項目が削除されました。"
+    
+class TodoAnalyticsView(View):
+    template_name = 'todoapp/todo_analytics.html'
+    
+    def get(self, request, *args, **kwargs):        
+        # ---------- ① データの取得 ----------
+        # Todo モデルから完了・未完了の統計データを取得
+        stats = models.Todo.get_completion_stats()
+
+        # ---------- ② グラフの作成 ----------
+        # グラフの枠組みを作成 (1行2列、サイズは横12×縦5インチ)
+        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+
+        # ----- 左側: 円グラフの作成 -----
+        # グラフのラベル設定
+        labels = ['Completed', 'Incomplete']  # 完了と未完了
+        # グラフの値（完了タスク数と未完了タスク数）
+        sizes = [stats['completed'], stats['not_completed']]
+        # グラフの色設定（完了は緑、未完了はピンク）
+        colors = ['#66FF99', '#FF3399']
+        # 円グラフを描画
+        # autopct='%1.1f%%': 各部分に割合を表示（例: 75.0%）
+        # startangle=90: 円グラフの開始角度を90度に設定
+        ax1.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=90)
+        # 円グラフを真円に保つ設定
+        ax1.axis('equal')
+        # グラフのタイトル設定
+        ax1.set_title('Task Completion Rate') 
+        
+        # ----- 右側: 棒グラフの作成 -----
+        # Todo モデルからデータをDataFrame形式で取得
+        df = models.Todo.get_todos_dataframe()
+        # データが存在する場合のみグラフを作成
+        if not df.empty:
+            # 作成日の日付部分だけを取り出して新しい列を作成
+            # df['created'] にはDateTime型のデータが入っているので、
+            # .dt.date で日付部分だけ取り出す
+            df['created_date'] = df['created'].dt.date
+            # 作成日ごとにタスク数をカウント
+            # groupby('created_date'): 作成日でグループ化
+            # size(): 各グループのタスク数をカウント
+            daily_counts = df.groupby('created_date').size()
+            
+            # 最新の7件のみを取得
+            recent_counts = daily_counts.tail(7)
+            
+            # Y軸の最大値を5に設定
+            ax2.set_ylim(0, 5)
+
+            # 棒グラフを描画
+            recent_counts.plot(kind='bar', ax=ax2, color='#4e73df')
+
+            # X軸のラベルを回転させて重なりを防ぐ
+            plt.xticks(rotation=20)
+            
+            # タイトルと軸ラベルを英語で設定
+            ax2.set_title('Recent Task Creation')
+            ax2.set_ylabel('Number of Tasks')
+            ax2.set_xlabel('Creation Date')
+                    
+        # ---------- ③ グラフをイメージデータに変換 ----------
+        # メモリ上に一時的なバッファを作成
+        buffer = io.BytesIO()
+        # グラフのレイアウトを調整（グラフ同士が重ならないように）
+        plt.tight_layout()
+        # グラフをPNG形式で一時バッファに保存
+        plt.savefig(buffer, format='png')
+        # バッファの読み取り位置を先頭に戻す
+        buffer.seek(0)
+        # バッファからイメージデータを取得
+        image_png = buffer.getvalue()
+        # バッファを閉じる
+        buffer.close()
+        
+        # イメージデータをBase64形式（テキスト形式）に変換
+        # これによりHTMLに直接埋め込めるようになる
+        graph = base64.b64encode(image_png).decode('utf-8')
+        
+    # ---------- ④ テンプレートにデータを渡す ----------
+        # テンプレートに渡すデータを辞書で準備
+        context = {
+            'stats': stats,  # 統計データ
+            'graph': graph,  # グラフのBase64エンコードされたデータ
+        }
+        
+        # テンプレートをレンダリングしてHTMLを生成し、レスポンスとして返す
+        return render(request, self.template_name, context)
