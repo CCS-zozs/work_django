@@ -1,0 +1,302 @@
+[
+  {
+    "model": "chemicalsearch.chemical",
+    "pk": 1,
+    "fields": {
+      "name_en": "Sulfuric acid",
+      "name_jp": "硫酸",
+      "cas_number": "7664-93-9",
+      "sds_threshold": 0.1,
+      "label_threshold": 1.0,
+      "note": "Strong acid, skin corrosion hazard."
+    }
+  },
+  {
+    "model": "chemicalsearch.chemical",
+    "pk": 2,
+    "fields": {
+      "name_en": "Toluene",
+      "name_jp": "トルエン",
+      "cas_number": "108-88-3",
+      "sds_threshold": 0.1,
+      "label_threshold": 0.1,
+      "note": "Common solvent, reproductive toxicity."
+    }
+  },
+  {
+    "model": "chemicalsearch.chemical",
+    "pk": 3,
+    "fields": {
+      "name_en": "Formaldehyde",
+      "name_jp": "ホルムアルデヒド",
+      "cas_number": "50-00-0",
+      "sds_threshold": 0.1,
+      "label_threshold": 0.1,
+      "note": "Carcinogen, skin sensitizer."
+    }
+  },
+  {
+    "model": "chemicalsearch.chemical",
+    "pk": 4,
+    "fields": {
+      "name_en": "Lead",
+      "name_jp": "鉛",
+      "cas_number": "7439-92-1",
+      "sds_threshold": 0.1,
+      "label_threshold": 0.1,
+      "note": "Heavy metal, RoHS restricted."
+    }
+  },
+  {
+    "model": "chemicalsearch.chemical",
+    "pk": 5,
+    "fields": {
+      "name_en": "Benzene",
+      "name_jp": "ベンゼン",
+      "cas_number": "71-43-2",
+      "sds_threshold": 0.1,
+      "label_threshold": 0.1,
+      "note": "Known human carcinogen."
+    }
+  },
+  {
+    "model": "chemicalsearch.chemical",
+    "pk": 6,
+    "fields": {
+      "name_en": "Ethanol",
+      "name_jp": "エタノール",
+      "cas_number": "64-17-5",
+      "sds_threshold": 0.1,
+      "label_threshold": 1.0,
+      "note": "Flammable liquid."
+    }
+  },
+  {
+    "model": "chemicalsearch.chemical",
+    "pk": 7,
+    "fields": {
+      "name_en": "Acetone",
+      "name_jp": "アセトン",
+      "cas_number": "67-64-1",
+      "sds_threshold": 1.0,
+      "label_threshold": 1.0,
+      "note": "Highly flammable, eye irritation."
+    }
+  },
+  {
+    "model": "chemicalsearch.chemical",
+    "pk": 8,
+    "fields": {
+      "name_en": "Methanol",
+      "name_jp": "メタノール",
+      "cas_number": "67-56-1",
+      "sds_threshold": 0.1,
+      "label_threshold": 0.1,
+      "note": "Toxic if swallowed."
+    }
+  },
+  {
+    "model": "chemicalsearch.chemical",
+    "pk": 9,
+    "fields": {
+      "name_en": "Sodium hydroxide",
+      "name_jp": "水酸化ナトリウム",
+      "cas_number": "1310-73-2",
+      "sds_threshold": 0.1,
+      "label_threshold": 1.0,
+      "note": "Caustic soda, skin corrosion."
+    }
+  },
+  {
+    "model": "chemicalsearch.chemical",
+    "pk": 10,
+    "fields": {
+      "name_en": "Perfluorooctanoic acid (PFOA)",
+      "name_jp": "ペルフルオロオクタン酸",
+      "cas_number": "335-67-1",
+      "sds_threshold": 0.1,
+      "label_threshold": 0.1,
+      "note": "PFAS substance, POPs restricted."
+    }
+  },
+  {
+    "model": "chemicalsearch.chemical",
+    "pk": 11,
+    "fields": {
+      "name_en": "Perfluorooctane sulfonic acid (PFOS)",
+      "name_jp": "ペルフルオロオクタンスルホン酸",
+      "cas_number": "1763-23-1",
+      "sds_threshold": 0.1,
+      "label_threshold": 0.1,
+      "note": "PFAS substance, restricted globally."
+    }
+  },
+  {
+    "model": "chemicalsearch.chemical",
+    "pk": 12,
+    "fields": {
+      "name_en": "Bis(2-ethylhexyl) phthalate (DEHP)",
+      "name_jp": "フタル酸ビス(2-エチルヘキシル)",
+      "cas_number": "117-81-7",
+      "sds_threshold": 0.1,
+      "label_threshold": 0.1,
+      "note": "Plasticizer for PVC, SVHC candidate."
+    }
+  },
+  {
+    "model": "chemicalsearch.chemical",
+    "pk": 13,
+    "fields": {
+      "name_en": "Vinyl chloride",
+      "name_jp": "塩化ビニル",
+      "cas_number": "75-01-4",
+      "sds_threshold": 0.1,
+      "label_threshold": 0.1,
+      "note": "Monomer for PVC, carcinogen."
+    }
+  },
+  {
+    "model": "chemicalsearch.chemical",
+    "pk": 14,
+    "fields": {
+      "name_en": "Xylene",
+      "name_jp": "キシレン",
+      "cas_number": "1330-20-7",
+      "sds_threshold": 0.1,
+      "label_threshold": 1.0,
+      "note": "Mixture of isomers."
+    }
+  },
+  {
+    "model": "chemicalsearch.chemical",
+    "pk": 15,
+    "fields": {
+      "name_en": "Cadmium",
+      "name_jp": "カドミウム",
+      "cas_number": "7440-43-9",
+      "sds_threshold": 0.1,
+      "label_threshold": 0.1,
+      "note": "Carcinogen, aquatic toxicity."
+    }
+  },
+  {
+    "model": "chemicalsearch.chemical",
+    "pk": 16,
+    "fields": {
+      "name_en": "Ammonia",
+      "name_jp": "アンモニア",
+      "cas_number": "7664-41-7",
+      "sds_threshold": 1.0,
+      "label_threshold": 1.0,
+      "note": "Toxic gas, skin corrosion."
+    }
+  },
+  {
+    "model": "chemicalsearch.chemical",
+    "pk": 17,
+    "fields": {
+      "name_en": "Bisphenol A (BPA)",
+      "name_jp": "ビスフェノールA",
+      "cas_number": "80-05-7",
+      "sds_threshold": 1.0,
+      "label_threshold": 1.0,
+      "note": "Endocrine disruptor."
+    }
+  },
+  {
+    "model": "chemicalsearch.chemical",
+    "pk": 18,
+    "fields": {
+      "name_en": "Chloroform",
+      "name_jp": "クロロホルム",
+      "cas_number": "67-66-3",
+      "sds_threshold": 0.1,
+      "label_threshold": 1.0,
+      "note": "Suspected carcinogen."
+    }
+  },
+  {
+    "model": "chemicalsearch.chemical",
+    "pk": 19,
+    "fields": {
+      "name_en": "Hydrochloric acid",
+      "name_jp": "塩酸",
+      "cas_number": "7647-01-0",
+      "sds_threshold": 1.0,
+      "label_threshold": 1.0,
+      "note": "Corrosive to metals."
+    }
+  },
+  {
+    "model": "chemicalsearch.chemical",
+    "pk": 20,
+    "fields": {
+      "name_en": "Isopropyl alcohol (IPA)",
+      "name_jp": "イソプロピルアルコール",
+      "cas_number": "67-63-0",
+      "sds_threshold": 1.0,
+      "label_threshold": 1.0,
+      "note": "Disinfectant, flammable."
+    }
+  },
+  {
+    "model": "chemicalsearch.chemical",
+    "pk": 21,
+    "fields": {
+      "name_en": "n-Hexane",
+      "name_jp": "ノルマルヘキサン",
+      "cas_number": "110-54-3",
+      "sds_threshold": 1.0,
+      "label_threshold": 1.0,
+      "note": "Neurotoxicity hazard."
+    }
+  },
+  {
+    "model": "chemicalsearch.chemical",
+    "pk": 22,
+    "fields": {
+      "name_en": "Zinc oxide",
+      "name_jp": "酸化亜鉛",
+      "cas_number": "1314-13-2",
+      "sds_threshold": 1.0,
+      "label_threshold": 1.0,
+      "note": "Aquatic toxicity."
+    }
+  },
+  {
+    "model": "chemicalsearch.chemical",
+    "pk": 23,
+    "fields": {
+      "name_en": "Dichloromethane",
+      "name_jp": "ジクロロメタン",
+      "cas_number": "75-09-2",
+      "sds_threshold": 0.1,
+      "label_threshold": 0.1,
+      "note": "Methylene chloride, carcinogen."
+    }
+  },
+  {
+    "model": "chemicalsearch.chemical",
+    "pk": 24,
+    "fields": {
+      "name_en": "Water",
+      "name_jp": "水",
+      "cas_number": "7732-18-5",
+      "sds_threshold": null,
+      "label_threshold": null,
+      "note": "Solvent, non-hazardous."
+    }
+  },
+  {
+    "model": "chemicalsearch.chemical",
+    "pk": 25,
+    "fields": {
+      "name_en": "Acetaldehyde",
+      "name_jp": "アセトアルデヒド",
+      "cas_number": "75-07-0",
+      "sds_threshold": 1.0,
+      "label_threshold": 1.0,
+      "note": "Flammable liquid, carcinogen."
+    }
+  }
+]

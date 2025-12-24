@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>化学物質リスト</title>
+</head>
+<body>
+    <h1>化学物質リスト</h1>
+    <hr>
+    <!-- 化学物質リスト -->
+    <table border="1">
+        <tr>
+            <th>英語名</th>
+            <th>日本語名</th>
+            <th>CAS番号</th>
+        </tr>
+        {% for chemical in chemicals %}
+        <tr>
+            <td>{{ chemical.name_en }}</td>
+            <td>{{ chemical.name_jp }}</td>
+            <td>{{ chemical.cas_number }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">化学物質が登録されていません。</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="{% url 'chemicalsearch:orm_index' %}">Django ORM 操作一覧へ</a>
+</body>
+</html>
