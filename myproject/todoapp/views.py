@@ -15,7 +15,7 @@ from django.utils.timezone import localtime
 from .forms import TodoForm
 from django.contrib.messages.views import SuccessMessageMixin
 
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 # ============================================================
 # ToDo一覧表示用のビュー：継承元はListView
@@ -28,37 +28,40 @@ class TodoListView(LoginRequiredMixin, ListView):
     # テンプレートで使用するオブジェクトリストの名前を指定
     context_object_name = 'todos'
     
-class TodoDetailView(DetailView):
+class TodoDetailView(LoginRequiredMixin, DetailView):
     model = models.Todo
     template_name = 'todoapp/todo_detail.html'
     context_object_name = 'todo'
     
-class TodoCreateView(SuccessMessageMixin, CreateView):
+class TodoCreateView(SuccessMessageMixin, LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = models.Todo
     template_name = 'todoapp/todo_create.html'
     form_class = TodoForm
     success_url = reverse_lazy('todo_list')
     success_message = "Todo項目が作成されました。"
+    permission_required = 'todoapp.add_todo'
 
-class TodoUpdateView(SuccessMessageMixin, UpdateView):
+class TodoUpdateView(SuccessMessageMixin, LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = models.Todo
     template_name = 'todoapp/todo_update.html'
     form_class = TodoForm
     success_url = reverse_lazy('todo_list')
     success_message = "Todo項目が更新されました。"
+    permission_required = 'todoapp.change_todo'
 
     def form_valid(self, form):
         todo = form.save()
         print(f"Todo項目が更新されました: {todo.title} (更新日時: {localtime(todo.updated)})")
         return super().form_valid(form)
 
-class TodoDeleteView(SuccessMessageMixin, DeleteView):
+class TodoDeleteView(SuccessMessageMixin, LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = models.Todo
     template_name = 'todoapp/todo_confirm_delete.html'
     success_url = reverse_lazy('todo_list')
     success_message = "Todo項目が削除されました。"
+    permission_required = 'todoapp.delete_todo'
     
-class TodoAnalyticsView(View):
+class TodoAnalyticsView(LoginRequiredMixin, View):
     template_name = 'todoapp/todo_analytics.html'
     
     def get(self, request, *args, **kwargs):        
