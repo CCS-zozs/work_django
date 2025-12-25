@@ -33,4 +33,5 @@ urlpatterns = [
     path('exe05/', include('chemicalsearch.urls')),
     path('', LoginView.as_view(template_name='login.html'), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
+    path('contact/', include('contact_mail.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

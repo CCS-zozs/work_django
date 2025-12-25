@@ -12,19 +12,23 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# 这行代码会寻找项目根目录下的 .env 文件并将内容注入到环境变量中
+load_dotenv(BASE_DIR / '.env')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-9b&5m81c(5cjy*j_odd63(30quxnw8qjg7@1bh(btee@8)%^x#'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'default-unsafe-key-for-dev')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# 调试模式（生产环境必须为 False）
+# 只有当环境变量里明确写了 'True' 时才开启，否则默认为 False
+DEBUG = os.environ.get('DEBUG') == 'True'
 
 ALLOWED_HOSTS = []
 
@@ -42,7 +46,25 @@ INSTALLED_APPS = [
     'todoapp',
     'educationapp',
     'chemicalsearch',
+    'anymail',
+    'contact_mail',
 ]
+
+# 配置 Anymail 使用 Mailgun
+ANYMAIL = {
+    "MAILGUN_API_KEY": os.environ.get("MAILGUN_API_KEY"),  # 建议从环境变量读取
+    "MAILGUN_SENDER_DOMAIN": os.environ.get("MAILGUN_SENDER_DOMAIN"),    # 您在Mailgun认证过的域名
+    "MAILGUN_API_URL": "https://api.mailgun.net/v3", # 如果您的域是在欧盟区，需改为 https://api.eu.mailgun.net/v3
+}
+
+# 告诉 Django 使用 Anymail 作为邮件后端
+EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
+
+# 默认发件人（必须是您Mailgun认证域名下的地址）
+DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL")
+
+# 开发者指定的接收邮件地址（根据您的需求）
+ADMIN_RECEIVER_EMAIL = os.environ.get("ADMIN_RECEIVER_EMAIL")
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
