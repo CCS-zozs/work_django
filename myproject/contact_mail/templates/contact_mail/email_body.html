@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* 邮件客户端对CSS支持有限，尽量写简单样式或内联样式 */
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 20px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .header { background-color: #007bff; color: white; padding: 10px 20px; border-radius: 5px 5px 0 0; }
+        .content { padding: 20px; line-height: 1.6; color: #333333; }
+        .footer { font-size: 12px; color: #888888; text-align: center; margin-top: 20px; }
+        .label { font-weight: bold; color: #555; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>🔔 来自网站的新消息</h2>
+        </div>
+        <div class="content">
+            <p>您好，管理员：</p>
+            <p>您的网站收到了一条新的用户反馈，内容如下：</p>
+            <hr style="border: 0; border-top: 1px solid #eee;">
+            
+            <div style="background-color: #f9f9f9; padding: 15px; border-left: 4px solid #007bff;">
+                {{ content|linebreaks }}
+            </div>
+            
+            <hr style="border: 0; border-top: 1px solid #eee;">
+            <p>请及时处理。</p>
+        </div>
+        <div class="footer">
+            <p>此邮件由 Chemlinked 自动发送，请勿直接回复。</p>
+        </div>
+    </div>
+</body>
+</html>
